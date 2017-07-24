@@ -8,8 +8,16 @@
   </head>
   <body>
     Welcome to the chat app!
-    
+    <ul id="message-list">
+      <!-- placeholder for messages -->
+    </ul>
+    <form id="message-form">
+      <input type="text" name="text" value="text" placeholder="text">
+      <button>Send</button>
+    </form>
+
     <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="./js/main.js"></script>
   </body>
 </html>
