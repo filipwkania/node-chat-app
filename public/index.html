@@ -1,12 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title></title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="css/style.css" rel="stylesheet">
-    </head>
-    <body>
-        Welcome to the chat app!
-    </body>
+  <head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link href="css/style.css" rel="stylesheet"> -->
+  </head>
+  <body>
+    Welcome to the chat app!
+    
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      let socket = io();
+      socket.on('connect', () => {
+        console.log('Connected to server!');
+      });
+
+      socket.on('disconnect', () => {
+        console.log('Disconected from server!');
+      });
+    </script>
+  </body>
 </html>
