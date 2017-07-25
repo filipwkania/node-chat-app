@@ -2,6 +2,7 @@ const path = require('path');
 const express = require('express');
 const socketIO = require('socket.io');
 const http = require('http');
+
 const {generateMessage, generateLocationMessage} = require('./utils/message');
 
 const publicPath = path.join(__dirname, '../public');
@@ -23,7 +24,6 @@ io.on( 'connection', (socket) => {
 
   socket.on('createMessage', (message, callback) => {
     console.log('New message from', message.from);
-    message.createdAt = (+ new Date());
     io.emit('newMessage', 
       generateMessage(message.from, message.text));
     if (callback) { callback('OK from server'); }
@@ -31,6 +31,8 @@ io.on( 'connection', (socket) => {
 
   socket.on('disconnect', () => {
     console.log('User disconnected');
+    io.emit('newMessage', 
+      generateMessage("Admin", "User left the chat."));
   });
 
   socket.on('createLocationMessage', (position) => {
